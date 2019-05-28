@@ -1,0 +1,47 @@
+# DEVELOMENT
+version: "3.3"
+
+services:
+  mtd-frontend-dev:
+    container_name: "mtd-frontend-dev-${BRANCH_NAME}"
+    build:
+      context: .
+      dockerfile: docker/mtd-frontend-dev.Dockerfile
+    image: "docker.maground.com/mtd-frontend-dev:${BRANCH_NAME}"
+    environment:
+      - NODE_ENV=$${NODE_ENV:-development}
+    volumes:
+      - ab_src_front:/app
+    ports:
+      - "9235:9235"
+      - "9255:9255"
+      - "9275:9275"
+      - "9295:9295"
+    privileged: true
+    stdin_open: true
+    tty: true
+    networks:
+      ab_net:
+        aliases:
+          - mtd-frontend-dev
+
+  nginx:
+    container_name: mtd-nginx-dev
+    image: docker.mtd.com/mtd_nginx_dev_compose
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - ab_net
+    volumes:
+      - ab_src_front:/app
+
+networks:
+  ab_net:
+    external: true
+
+volumes:
+  ab_src_front:
+    external: true
+  dev_src_front:
+    external: true

@@ -1,0 +1,3 @@
+/* Text */
+@fontWeight: 300;
+@fontFamily: acumin-pro, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, sans-serif;

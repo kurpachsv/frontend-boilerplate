@@ -1,0 +1,6 @@
+mutation SwitchLocale($locale: LOCALE!, $type: SERVICE!) {
+    switchLocale(locale: $locale, type: $type) {
+        locale
+        messages
+    }
+}

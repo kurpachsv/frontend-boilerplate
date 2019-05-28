@@ -1,0 +1,4 @@
+@borderRadius: @4px;
+@horizontalPadding: @8px;
+@horizontalLabelMinWidth: 1em;
+

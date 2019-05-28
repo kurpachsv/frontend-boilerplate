@@ -1,0 +1,67 @@
+# developer
+version: "2.2"
+
+x-function: &function
+    build:
+        context: .
+        dockerfile: docker/mtd-frontend.Dockerfile
+    image: "docker.maground.com/mtd-frontend:${BRANCH_NAME}"
+    restart: always
+    environment:
+        - NODE_ENV=$${NODE_ENV:-production}
+        - USE_MOCKS=$${USE_MOCKS:-false}
+
+
+services:
+
+  mtd-frontend-admin:
+    <<: *function
+    container_name: mtd-frontend-admin-${BRANCH_NAME}
+    command: pm2-docker start config/pipeline.pm2/production/admin.yml
+    networks:
+      ab_net:
+        aliases:
+          - mtd-admin
+    labels:
+        gelf_app: mtd
+        gelf_stand: ${TARGET_STAND}
+        gelf_service: frontend
+        gelf_subservice: admin
+    ports:
+        - "127.0.0.1:3045:3045"
+
+  mtd-frontend-landing:
+    <<: *function
+    container_name: mtd-frontend-landing-${BRANCH_NAME}
+    command: pm2-docker start config/pipeline.pm2/production/landing.yml
+    networks:
+      ab_net:
+        aliases:
+          - mtd-landing
+    labels:
+        gelf_app: mtd
+        gelf_stand: ${TARGET_STAND}
+        gelf_service: frontend
+        gelf_subservice: landing
+    ports:
+        - "127.0.0.1:3035:3035"
+
+  mtd-frontend-graphql:
+    <<: *function
+    container_name: mtd-frontend-graphql-${BRANCH_NAME}
+    command: pm2-docker start config/pipeline.pm2/production/graphql.yml
+    networks:
+      ab_net:
+        aliases:
+          - mtd-graphql
+    labels:
+        gelf_app: mtd
+        gelf_stand: ${TARGET_STAND}
+        gelf_service: frontend
+        gelf_subservice: graphql
+    ports:
+        - "127.0.0.1:3095:3095"
+
+networks:
+  ab_net:
+    external: true

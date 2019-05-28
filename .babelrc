@@ -1,0 +1,13 @@
+{
+  "presets": [["es2015", { "modules": false }], "react", "stage-2", "flow"],
+  "plugins": [
+      "transform-regenerator",
+      "react-hot-loader/babel",
+      "transform-export-extensions",
+      "transform-react-handled-props",
+      "transform-decorators-legacy",
+      "transform-do-expressions",
+      "transform-function-bind",
+      "transform-class-properties"
+  ]
+}

@@ -1,0 +1,25 @@
+/*******************************
+        Global Overrides
+*******************************/
+@media only screen and (max-width: @largestMobileScreen) {
+    *[class*="tablet only"],
+    *[class*="computer only"],
+    *[class*="except mobile"] {
+        display: none!important;
+    }
+}
+@media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+    *[class*="mobile only"],
+    *[class*="computer only"],
+    *[class*="except tablet"]
+    {
+        display: none!important;
+    }
+}
+@media only screen and (min-width: @computerBreakpoint) {
+    *[class*="mobile only"],
+    *[class*="tablet only"],
+    *[class*="except computer"] {
+        display: none!important;
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "ssr-renderer",
+  "version": "0.0.0",
+  "description": "SSR renderer",
+  "main": "renderer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

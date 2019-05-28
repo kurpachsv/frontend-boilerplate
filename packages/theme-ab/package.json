@@ -1,0 +1,15 @@
+{
+    "name": "theme",
+    "version": "0.0.1",
+    "description": "Common UI styles and resources",
+    "main": "index.js",
+    "scripts": {
+        "postinstall": "node semantic-fix.js && npm run semantic",
+        "semantic": "\"..\\..\\node_modules\\.bin\\webpack\" --config ./semantic/webpack.config.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "semantic-ui-less": "^2.4.1"
+    }
+}

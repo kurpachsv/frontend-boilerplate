@@ -1,0 +1,12 @@
+* {
+    -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+#app-root {
+    height: 100%;
+}

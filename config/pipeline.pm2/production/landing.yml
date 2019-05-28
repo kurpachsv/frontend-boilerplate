@@ -1,0 +1,13 @@
+apps:
+  - name: landing
+    script: build/server/landing.js
+    max_memory_restart: 1G
+    min_uptime: 1000
+    kill_timeout: 3000
+    autorestart: true
+    max_restarts: 5
+    merge_logs: true
+    out_file: ./landing.log
+    error_file: ./landing.log
+    env:
+        NODE_ENV: production

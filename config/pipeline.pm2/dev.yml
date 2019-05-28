@@ -1,0 +1,34 @@
+apps:
+    # Landing SSR
+  - name: landing
+    script: node_modules/webpack/bin/webpack.js
+    args: --config @landing/server/webpack.config.js
+    merge_logs: true
+    out_file: ./log/landing-dev.log
+    error_file: ./log/landing-dev.log
+    source_map_support: true
+    # Admin SSR
+  - name: admin
+    script: node_modules/webpack/bin/webpack.js
+    args: --config @admin/server/webpack.config.js
+    merge_logs: true
+    out_file: ./log/admin-dev.log
+    error_file: ./log/admin-dev.log
+    source_map_support: true
+    # Client bundles with HMR
+  - name: client
+    script: node_modules/webpack-dev-server/bin/webpack-dev-server.js
+    args: --config config/client.webpack.config.js
+    merge_logs: true
+    out_file: ./log/client-dev.log
+    error_file: ./log/client-dev.log
+    env:
+        NODE_ENV: development
+    # GraphQL server
+  - name: graphql
+    script: node_modules/webpack/bin/webpack.js
+    args: --config @graphql/webpack.config.js
+    merge_logs: true
+    out_file: ./log/graphql-dev.log
+    error_file: ./log/graphql-dev.log
+    source_map_support: true
